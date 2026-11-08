@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>BTS Player</title>
+</head>
+<body>
+    <audio id="btsPlayer" controls autoplay style="width:100%;">
+        <source id="audioSource" src="FAKE LOVE - BTS.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const playlist = ["FAKE LOVE - BTS.mp3", "Go Go Go -BTS.mp3", "Magic Shop BTS.mp3"];
+        let currentTrack = 0;
+        const player = document.getElementById("btsPlayer");
+        const source = document.getElementById("audioSource");
+
+        player.onended = function() {
+            currentTrack = (currentTrack + 1) % playlist.length;
+            source.src = playlist[currentTrack];
+            player.load();
+            player.play();
+        };
+    </script>
+</body>
+</html>
